@@ -26,6 +26,7 @@ La justificación y capturas de pantalla de la configuración del repositorio (G
 Para entender mejor los problemas reales que afrontan los estudiantes al elegir sus asignaturas optativas, planificamos el proceso utilizando perfiles de alumnos y escenarios de uso. Toda la justificación se encuentra en los siguientes documentos:
 * [Perfiles de usuario (Personas)](docs/persona.md)
 * [Viajes de usuario (User Journeys)](docs/user-journey.md)
+
 Las historias de usuario  y los Milestones se encuentran configurados y enlazados directamente en la pestaña de Issues y Milestones de este repositorio y tambien en el directorio docs:
 * [Historias de usuario](docs/historias-usuario.md)
 * [Milestones](docs/milestones.md)
