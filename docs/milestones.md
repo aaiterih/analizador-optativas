@@ -1,9 +1,9 @@
-Milestone 0: Versión inicial de las optativas y evaluación
-En este primer hito voy a entregar el primer script o paquete de código ejecutable del proyecto (Objetivo 2). Básicamente, es la primera versión empaquetada del problema con lo más básico, sin detallar todavía que características exactas va a incluir.
+## Milestone 0: Primer paquete ejecutable
+En este hito se entrega el primer paquete de código ejecutable con el esqueleto del proyecto configurado. Se trabaja a partir de los conceptos que aparecen en la [HU001].
 
-Para saber si este producto es válido, el código tiene que poder ejecutarse en el lenguaje elegido sin que salten errores al lanzarlo. Si se ejecuta correctamente, significa que tengo la base lista y funcional para empezar a construir el resto de cosas encima.
+Para comprobar que esta primera versión es válida, se evalúa el proceso seguido. El hito se considera cerrado cuando todos sus issues están resueltos mediante commits, y el código ha entrado en la rama principal a través de un pull request revisado.
 
-Milestone 1: Lógica de cálculo y comprobación automática
-En este hito voy a entregar el código principal del programa empaquetado junto con sus pruebas automáticas (Objetivo 4). Es una versión funcional de la aplicación, pero sin detallar tareas específicas por si cambian sobre la marcha.
+## Milestone 1: Paquete con tests automáticos
+En este hito se desarrolla la lógica principal del proyecto a partir del paso anterior, con el objetivo de resolver la [HU002], completar la [HU001] e incorporar la infraestructura de tests automáticos.
 
-Para comprobar que este producto es válido y funciona de verdad, me basaré en la automatización. Sabré que es viable cuando los tests se ejecuten y pasen en verde. Esto me demostrará que el código va bien y sin fallos, independientemente de lo que acabe programando al final. 
+Para comprobar que este producto es válido, se usan las pruebas automáticas. El hito se considera cerrado cuando los tests se lanzan con la herramienta de tareas del proyecto y pasan en verde.
