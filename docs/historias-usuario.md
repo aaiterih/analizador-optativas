@@ -1,5 +1,4 @@
 ## [HU001] Elegir optativas que se aprueben con evaluación continua
-* **Asociada al milestone:** [Milestone 0: Primer paquete ejecutable](./milestones.md)
 * **User Journey relacionado:** [Ver jornada del estudiante](./user-journey.md)
 * **Fuentes de datos:** [Explicadas en el README principal](../README.md)
 
@@ -9,7 +8,6 @@ Como David (estudiante de 4º centrado en el TFG), mi problema es que averiguar 
 * **Nota mínima:** Calificación exigida en el examen, o aprobar una parte como por ejemplo la teoría, para poder sumar las demás partes. Si existe nota mínima, la evaluación continua por sí sola no basta para aprobar, y el resultado debe indicarlo.
 
 ## [HU002] Evitar optativas con asistencia obligatoria
-* **Asociada al milestone:** [Milestone 1: Paquete con tests automáticos](./milestones.md)
 * **User Journey relacionado:** [Ver jornada del estudiante](./user-journey.md)
 * **Fuentes de datos:** [Explicadas en el README principal](../README.md)
 
