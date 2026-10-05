@@ -31,5 +31,5 @@ Para entender mejor los problemas reales que afrontan los estudiantes al elegir 
 * [Viajes de usuario (User Journeys)](docs/user-journey.md)
 
 Las historias de usuario  y los Milestones se encuentran configurados y enlazados directamente en la pestaña de Issues y Milestones de este repositorio y tambien en el directorio docs:
-* [Historias de usuario](docs/historias-usuario.md)
-* [Milestones](docs/milestones.md)
+* [Historias de usuario](docs/historias-de-usuario.md)
+* [Milestones](docs/hitos.md)
