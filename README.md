@@ -11,6 +11,9 @@ El problema es que toda esta información está dentro de guías docentes en PDF
 ## ¿Qué datos existen ya?
 Toda la información necesaria para resolver este problema ya existe de forma pública en los documentos oficiales de la universidad. Por lo que, para solucionar este problema no se pedirá que el estudiante inserte los datos de las asignaturas a mano.
 
+## Fuente de datos:
+* [Guías Docentes Firmadas](https://grados.ugr.es/informacion/guias-docentes-firmadas/2025-2026/grado-ingenieria-informatica)
+
 ## Necesidad de Lógica de Negocio
 Este problema no se soluciona simplemente guardando y buscando archivos por título. Como la información de los PDF está diseñada para lectura humana y no estructurada en una base de datos, la solución requiere interpretar texto y realizar cálculos:
 
@@ -20,4 +23,13 @@ Este problema no se soluciona simplemente guardando y buscando archivos por tít
 
 ## Configuración del Entorno
 La justificación y capturas de pantalla de la configuración del repositorio (Git, claves SSH y perfil) se encuentran en el siguiente archivo:
-[Ver configuración del repositorio](doc/configuracion.md)
+[Ver configuración del repositorio](docs/configuracion.md)
+
+## Planificación del Proyecto 
+Para entender mejor los problemas reales que afrontan los estudiantes al elegir sus asignaturas optativas, planificamos el proceso utilizando perfiles de alumnos y escenarios de uso. Toda la justificación se encuentra en los siguientes documentos:
+* [Perfiles de usuario (Personas)](docs/persona.md)
+* [Viajes de usuario (User Journeys)](docs/user-journey.md)
+
+Las historias de usuario  y los Milestones se encuentran configurados y enlazados directamente en la pestaña de Issues y Milestones de este repositorio y tambien en el directorio docs:
+* [Historias de usuario](docs/historias-de-usuario.md)
+* [Milestones](docs/hitos.md)
