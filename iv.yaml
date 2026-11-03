@@ -1,2 +1,2 @@
 lenguaje: go
-entidad: optativas/optativa.go
+entidad: internal/optativas/oferta_optativas.go
