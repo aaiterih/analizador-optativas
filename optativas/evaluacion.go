@@ -1,10 +1,5 @@
 package optativas
 
-import (
-	"errors"
-	"math"
-)
-
 type TipoEvaluacion string
 
 const (
@@ -16,36 +11,7 @@ const (
 	Examen        TipoEvaluacion = "examen"
 )
 
-var tiposEvaluacionValidos = map[TipoEvaluacion]bool{
-	Teoria:        true,
-	Practicas:     true,
-	Trabajos:      true,
-	Entregables:   true,
-	Participacion: true,
-	Examen:        true,
-}
-
-var (
-	ErrPorcentajeInvalido     = errors.New("el porcentaje debe estar entre 0 y 100")
-	ErrTipoEvaluacionInvalido = errors.New("el tipo de evaluación no está definido")
-)
-
 type ParteEvaluacion struct {
 	tipo       TipoEvaluacion
 	porcentaje float64
-}
-
-func NuevaParteEvaluacion(tipo TipoEvaluacion, porcentaje float64) (ParteEvaluacion, error) {
-	if !tiposEvaluacionValidos[tipo] {
-		return ParteEvaluacion{}, ErrTipoEvaluacionInvalido
-	}
-
-	if math.IsNaN(porcentaje) || porcentaje < 0 || porcentaje > 100 {
-		return ParteEvaluacion{}, ErrPorcentajeInvalido
-	}
-
-	return ParteEvaluacion{
-		tipo:       tipo,
-		porcentaje: porcentaje,
-	}, nil
 }
