@@ -1,6 +1,8 @@
 package optativas
 
+type CodigoAsignatura string
+
 type OfertaOptativas struct {
 	cursoAcademico string
-	evaluaciones   map[string]EvaluacionOptativa
+	evaluaciones   map[CodigoAsignatura]EvaluacionOptativa
 }
