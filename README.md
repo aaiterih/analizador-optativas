@@ -33,7 +33,3 @@ Para entender mejor los problemas reales que afrontan los estudiantes al elegir 
 Las historias de usuario  y los Milestones se encuentran configurados y enlazados directamente en la pestaña de Issues y Milestones de este repositorio y tambien en el directorio docs:
 * [Historias de usuario](docs/historias-de-usuario.md)
 * [Milestones](docs/hitos.md)
-
-## Lenguaje de programación
-
-Para el modelo hemos acordado usar Go. Su tipado estático nos ayuda a distinguir los conceptos del dominio y permite detectar errores de tipos al compilar.
