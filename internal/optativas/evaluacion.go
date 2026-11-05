@@ -10,8 +10,3 @@ const (
 	Participacion TipoEvaluacion = "participacion"
 	Examen        TipoEvaluacion = "examen"
 )
-
-type ParteEvaluacion struct {
-	tipo       TipoEvaluacion
-	porcentaje float64
-}

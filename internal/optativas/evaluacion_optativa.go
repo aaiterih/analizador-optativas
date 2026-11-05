@@ -1,6 +1,6 @@
 package optativas
 
 type EvaluacionOptativa struct {
-	partes      []ParteEvaluacion
+	porcentajes map[TipoEvaluacion]float64
 	condiciones []CondicionMinima
 }
