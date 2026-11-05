@@ -37,17 +37,3 @@ Las historias de usuario  y los Milestones se encuentran configurados y enlazado
 ## Lenguaje de programación
 
 Para el modelo hemos acordado usar Go. Su tipado estático nos ayuda a distinguir los conceptos del dominio y permite detectar errores de tipos al compilar.
-
-## Identificación de las optativas
-
-Para distinguir las optativas utilizamos el código oficial que
-aparece en las guías docentes de la UGR.
-
-Por ejemplo, Teoría de la Información y la Codificación tiene
-el código 29611AA en el curso 2026/2027.
-
-Por eso utilizamos el código oficial como clave del mapa de `OfertaOptativas`, ya que estos códigos también pueden contener letras.
-
-Cada código tiene asociada una `EvaluacionOptativa`, que guarda sus porcentajes y condiciones de evaluación. De esta forma no necesitamos repetir el código dentro de cada evaluación y mantenemos la información de las asignaturas agrupada en la oferta de un curso académico.
-
-Fuente: https://www.ugr.es/estudiantes/grados/grado-ingenieria-informatica/teoria-informacion-codificacion-csi/guia-docente
