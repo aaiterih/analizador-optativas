@@ -8,5 +8,4 @@ const (
 	Trabajos      TipoEvaluacion = "trabajos"
 	Entregables   TipoEvaluacion = "entregables"
 	Participacion TipoEvaluacion = "participacion"
-	Examen        TipoEvaluacion = "examen"
 )
