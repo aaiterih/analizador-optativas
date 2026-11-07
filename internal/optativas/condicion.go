@@ -8,7 +8,6 @@ const (
 )
 
 type CondicionMinima struct {
-	parte      TipoEvaluacion
 	tipo       TipoCondicion
 	notaMinima *float64
 }
