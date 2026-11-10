@@ -6,4 +6,6 @@ El trabajo se hace con issues que derivan directamente de los problemas definido
 ## Milestone 1: Paquete con tests automáticos
 En este hito se desarrolla la lógica principal del proyecto a partir del paso anterior, y se incorpora la infraestructura de tests automáticos.
 
+Como producto mínimo viable de este milestone, también se incluye la herramienta para automatizar las tareas del proyecto.
+
 Para comprobar que este producto es válido, se usan las pruebas automáticas. El hito se considera cerrado cuando los tests (que validan la lógica de negocio y comprueban que efectivamente se resuelve el problema de una HU específica) se lanzan con la herramienta de tareas del proyecto y pasan en verde, y cada test se relaciona con el issue que comprueba.
