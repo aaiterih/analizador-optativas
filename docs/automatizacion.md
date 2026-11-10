@@ -34,3 +34,22 @@ Para tomar la decisión, he instalado las tres herramientas en mi entorno WSL y 
 
   *(Evidencia de medición de tiempo)*:
   ![Medición de tiempo de Task](img/task-time.png)
+
+## Reflexión final
+**Herramienta elegida:** GNU Make.
+
+**Por qué la he elegido:**
+Lo que más me ha convencido es que no hay que instalar absolutamente nada y que no exige dependencias previas en el SO (a diferencia de Just o Task). Pensando en el futuro para la integración continua (CI), usar Make me garantiza que no tengo que instalar nada extra ni perder tiempo descargando binarios externos cada vez que se levanta un contenedor, reduciendo así los posibles puntos de fallo. Además, valoro positivamente que evalúe el estado de los ficheros en lugar de ejecutar comandos a ciegas.
+
+**Lo que pierdo:**
+Al elegir Make asumo que es más incómodo de escribir. Los ficheros `Makefile` tienen una sintaxis antigua (te obliga a usar tabuladores sí o sí, y si usas espacios se rompe). Opciones como Task o Just son mucho más modernas, visuales y se entienden mejor. Básicamente, renuncio a tener un archivo bonito y fácil de mantener a cambio de que la infraestructura y los workflows del proyecto vayan lo más rápidos y limpios posible.
+
+## Ejecución de tareas
+Para dejar una buena base en el proyecto, he preparado estas dos tareas iniciales:
+
+* **`install` (`go mod download`):** Ya sé que Go descarga las dependencias él solo cuando compilas o pasas los tests, pero prefiero dejar esta tarea explícita porque así cualquier persona del equipo (o el servidor de CI) que clone el repo tiene un comando estándar para inicializar su entorno, sin necesidad de saber que Go lo resuelve internamente.
+* **`check`:** Esta es la validación del código. Primero hace un `go vet ./...` para encontrar código raro, errores ocultos o malas prácticas. Si lo pasa, lanza un `go build -v -o /dev/null ./...` para comprobar que el código compila a la perfección, pero tirando el ejecutable directamente a la papelera (`/dev/null`) para no ensuciar el proyecto con binarios sueltos.
+
+Aquí dejo una captura de cómo se ve la tarea `check` funcionando en local, pasando ambas validaciones:
+
+![Ejecución de make check](img/make-check.png)
