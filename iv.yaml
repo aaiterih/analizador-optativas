@@ -1,2 +1,6 @@
 lenguaje: go
 entidad: internal/optativas/oferta_optativas.go
+
+automatizar:
+  fichero: Makefile
+  orden: make
