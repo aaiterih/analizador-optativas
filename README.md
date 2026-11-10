@@ -33,3 +33,17 @@ Para entender mejor los problemas reales que afrontan los estudiantes al elegir 
 Las historias de usuario  y los Milestones se encuentran configurados y enlazados directamente en la pestaña de Issues y Milestones de este repositorio y tambien en el directorio docs:
 * [Historias de usuario](docs/historias-de-usuario.md)
 * [Milestones](docs/hitos.md)
+
+## Automatización (Gestor de tareas)
+
+Usamos **GNU Make** como gestor de tareas. Si acabas de clonar el repositorio o has hecho cambios y quieres comprobar que el código está limpio y sin errores de sintaxis, abre la terminal y ejecuta:
+
+```bash
+make check
+```
+
+Para instalar las dependencias necesarias:
+
+```bash
+make install
+```
