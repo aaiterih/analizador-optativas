@@ -1,0 +1,8 @@
+version: '3'
+
+tasks:
+  check:
+    desc: Comprueba la sintaxis del código
+    cmds:
+      - go vet ./...
+      - go build -v -o /dev/null ./...
