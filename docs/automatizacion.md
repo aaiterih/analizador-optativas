@@ -36,3 +36,17 @@ Para tomar la decisión, he instalado las tres herramientas en mi entorno WSL y 
   *(Evidencia de ejecución de check)*:
   ![Ejecución de check con Just](img/just-check.png)
 
+- **Task (go-task):** Para instalarlo hace falta tener el compilador de Go entero (`go install`) y añadir su ruta al `PATH`, tardando `33.795s` en instalarse, ya que go install compila el binario en vez de descargar uno ya compilado. En ejecutar la tarea `check` tarda `0.425s`.
+
+  *(Evidencia de instalación)*:
+  ![Instalación de Task](img/task-install.png)
+
+  *(Evidencia de ejecución de check)*:
+  ![Ejecución de check con Task](img/task-check.png)
+
+## Reflexión final
+**Herramienta elegida:** GNU Make.
+
+**Por qué la he elegido:**
+Lo que más me ha convencido es que no hay que instalar absolutamente nada y que no exige dependencias previas en el SO (a diferencia de Just o Task). Pensando en el futuro para la integración continua (CI), usar Make me garantiza que no tengo que instalar nada extra ni perder tiempo descargando binarios externos cada vez que se levanta un contenedor, reduciendo así los posibles puntos de fallo. 
+
