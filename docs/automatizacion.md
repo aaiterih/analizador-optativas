@@ -28,3 +28,11 @@ Para tomar la decisión, he instalado las tres herramientas en mi entorno WSL y 
   *(Evidencia de ejecución de check)*:
   ![Ejecución de check con Make](img/make-check.png)
 
+- **Just:** Para instalarlo en un entorno limpio desde cero hace falta tener herramientas extra como `curl` y `bash`, tardando `0.710s` en instalarse. En ejecutar la tarea `check` tarda `0.087s`.
+
+  *(Evidencia de instalación)*:
+  ![Instalación de Just](img/just-install.png)
+
+  *(Evidencia de ejecución de check)*:
+  ![Ejecución de check con Just](img/just-check.png)
+
