@@ -1,0 +1,30 @@
+# Gestor de dependencias
+
+**Go Modules:** `go mod`
+
+**Por qué no hay comparación necesaria:**
+En Go no hay mucho debate sobre qué gestor de dependencias usar. Desde la versión 1.11, Go Modules viene integrado de fábrica en el propio compilador y es la solución oficial del lenguaje. Herramientas más antiguas como dep o glide ya están totalmente obsoletas. Al usar la herramienta nativa, nos aseguramos de gestionar las versiones de las librerías con el estándar oficial, sin tener que andar instalando software de terceros.
+
+# Gestor de tareas
+
+## Opciones consideradas
+- **GNU Make:** Es una herramienta basada en ficheros Makefile que ya viene integrada de serie en casi cualquier sistema tipo Linux/POSIX.
+- **Just:** Un lanzador de comandos más moderno y minimalista que usa un archivo justfile para organizar las tareas.
+- **Task (go-task):** Un gestor hecho en Go que usa ficheros YAML, por lo que resulta bastante fácil de leer.
+
+## Criterios
+Para tomar la decisión, he instalado las tres herramientas en mi entorno WSL y he medido estos aspectos:
+
+1. **Dependencias previas y requisitos de ejecución** — Importa porque el proyecto se va a desplegar en contenedores Docker limpios. Es relevante documentar si se requiere instalar utilidades extra del sistema operativo o intérpretes adicionales en la infraestructura base.
+2. **Tiempo de instalación y respuesta** — Importa porque, cada vez que se lanza un workflow de integración continua (CI), la máquina suele partir desde cero. El tiempo que tarda la herramienta en descargarse, configurarse y responder se suma al tiempo total de los despliegues y pruebas automatizadas.
+
+## Análisis de las alternativas
+
+- **GNU Make:** Su tiempo de instalación es nulo, ya que suele venir preinstalado en las imágenes base de Linux o se instala en milisegundos con las dependencias básicas del sistema. El tiempo de ejecución de la tarea `check` es de `0.050s`.
+
+  *(Evidencia de que Make ya viene disponible en el sistema)*:
+  ![Disponibilidad de Make](img/make-install.png)
+
+  *(Evidencia de ejecución de check)*:
+  ![Ejecución de check con Make](img/make-check.png)
+
