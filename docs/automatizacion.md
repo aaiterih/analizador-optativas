@@ -16,7 +16,7 @@ En Go no hay mucho debate sobre qué gestor de dependencias usar. Desde la versi
 Para tomar la decisión, he instalado las tres herramientas en mi entorno WSL y he medido estos aspectos:
 
 1. **Dependencias previas y requisitos de ejecución** — Importa porque el proyecto se va a desplegar en contenedores Docker limpios. Es relevante documentar si se requiere instalar utilidades extra del sistema operativo o intérpretes adicionales en la infraestructura base.
-2. **Tiempo de instalación y respuesta** — Importa porque, cada vez que se lanza un workflow de integración continua (CI), la máquina suele partir desde cero. El tiempo que tarda la herramienta en descargarse, configurarse y responder se suma al tiempo total de los despliegues y pruebas automatizadas.
+2. **Tiempo de instalación y ejecución de tareas** — Importa porque, cada vez que se lanza un workflow de integración continua (CI), la máquina suele partir desde cero. El tiempo que tarda la herramienta en descargarse, configurarse y responder se suma al tiempo total de los despliegues y pruebas automatizadas.
 
 ## Análisis de las alternativas
 
