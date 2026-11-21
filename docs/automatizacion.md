@@ -8,6 +8,14 @@ En Go no hay mucho debate sobre qué gestor de dependencias usar. Desde la versi
 # Gestor de tareas
 
 ## Opciones consideradas
+Antes de ponerme a medir tiempos, estuve revisando varias opciones tanto dentro de Go como fuera del lenguaje. Hay unas cuantas que descarté desde el principio porque no encajan con lo que necesita el proyecto ahora mismo:
+
+- **Goyek:** Librería para escribir las tareas en Go (`go run ./build`). No pide binarios externos, pero obliga a compilar código Go para lanzar comandos de terminal como `gofmt` o `go test`.
+- **Dagger:** Orientada a pipelines complejos en contenedores, mete demasiada complejidad para ejecutar directamente las comprobaciones y tests del proyecto.
+- **Mise:** Gestor moderno que combina control de versiones y tareas (`mise.toml`). Añade una gestión de entornos y ficheros de estado que aquí no necesito.
+
+Cuando descarté estas opciones, me centré en comparar las tres herramientas más ligeras que sí encajan con el proyecto:
+
 - **GNU Make:** Es una herramienta basada en ficheros Makefile que ya viene integrada de serie en casi cualquier sistema tipo Linux/POSIX.
 - **Just:** Un lanzador de comandos más moderno y minimalista que usa un archivo justfile para organizar las tareas.
 - **Task (go-task):** Un gestor hecho en Go que usa ficheros YAML, por lo que resulta bastante fácil de leer.
