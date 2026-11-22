@@ -31,3 +31,7 @@ Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores 
 - **Just:** Tarda `1.115s` en instalarse con su script oficial. Las 10 ejecuciones de `check` tardan `0.111s` en total, con una media de **`0.0111s`** por ejecución.
 
   ![Medición de instalación y ejecución con Just](img/just.png)
+
+- **Task (go-task):** Tarda `38.840s` en descargarse y compilarse con `go install`. Las 10 ejecuciones de `check` tardan `0.801s` en total, dejando una media de **`0.0801s`** por ejecución.
+
+  ![Medición de instalación y ejecución con Task](img/task.png)
