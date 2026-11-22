@@ -16,13 +16,13 @@ Para tomar la decisión, he lanzado las pruebas en mi entorno local (WSL con Ubu
 ## Opciones consideradas
 Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores clásicos como otras opciones genéricas más recientes:
 
-- **Mise:** Gestor moderno que combina control de versiones y tareas (`mise.toml`).
-- **GNU Make:** Es una herramienta basada en ficheros Makefile que ya viene integrada de serie en casi cualquier sistema tipo Linux/POSIX.
-- **Just:** Un lanzador de comandos más moderno y minimalista que usa un archivo justfile para organizar las tareas.
-- **Task (go-task):** Un gestor hecho en Go que usa ficheros YAML, por lo que resulta bastante fácil de leer.
-- **xc:** Un task runner bastante nuevo que saca las tareas directamente de los bloques de código del propio `README.md`.
-- **Mask:** Un task runner que define las tareas dentro de un fichero Markdown (`maskfile.md`), usando bloques de código como comandos.
-- **Invoke:** Una herramienta genérica que permite escribir las tareas como funciones en Python (`tasks.py`).
+- **[Mise](https://github.com/jdx/mise):** Gestor moderno que combina control de versiones y tareas (`mise.toml`).
+- **[GNU Make](https://www.gnu.org/software/make/):** Es una herramienta basada en ficheros Makefile que ya viene integrada de serie en casi cualquier sistema tipo Linux/POSIX.
+- **[Just](https://github.com/casey/just):** Un lanzador de comandos más moderno y minimalista que usa un archivo justfile para organizar las tareas.
+- **[Task (go-task)](https://github.com/go-task/task):** Un gestor hecho en Go que usa ficheros YAML, por lo que resulta bastante fácil de leer.
+- **[xc](https://github.com/joerdav/xc):** Un task runner bastante nuevo que saca las tareas directamente de los bloques de código del propio `README.md`.
+- **[Mask](https://github.com/jacobdeichert/mask):** Un task runner que define las tareas dentro de un fichero Markdown (`maskfile.md`), usando bloques de código como comandos.
+- **[Invoke](https://github.com/pyinvoke/invoke):** Una herramienta genérica que permite escribir las tareas como funciones en Python (`tasks.py`).
 
 ## Análisis de las alternativas
 
