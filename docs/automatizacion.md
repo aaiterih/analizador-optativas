@@ -39,3 +39,7 @@ Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores 
 - **Mise:** Tarda `2.848s` en instalarse con su instalador oficial. Las 10 ejecuciones de `check` tardan `0.278s` en total, es decir, **`0.0278s`** de media por ejecución.
 
   ![Medición de instalación y ejecución con Mise](img/mise.png)
+
+- **xc:** Tarda `7.215s` en descargarse y compilarse mediante `go install`. Las 10 ejecuciones de `check` tardan `0.230s` en total, con una media de **`0.023s`** por ejecución.
+
+  ![Medición de instalación y ejecución con xc](img/xc.png)
