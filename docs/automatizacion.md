@@ -1,74 +1,30 @@
 # Gestor de dependencias
 
-**Go Modules:** `go mod`
+**[Go Modules](https://go.dev/ref/mod):** `go mod`
 
 **Por qué no hay comparación necesaria:**
-En Go no hay mucho debate sobre qué gestor de dependencias usar. Desde la versión 1.11, Go Modules viene integrado de fábrica en el propio compilador y es la solución oficial del lenguaje. Herramientas más antiguas como dep o glide ya están totalmente obsoletas. Al usar la herramienta nativa, nos aseguramos de gestionar las versiones de las librerías con el estándar oficial, sin tener que andar instalando software de terceros.
+En Go no hay mucho que debatir. Según la documentación oficial de [Go Modules](https://go.dev/ref/mod), el soporte para módulos se introdujo en Go 1.11 y pasó a estar activado por defecto a partir de Go 1.16, integrándose en el propio compilador como el sistema oficial del lenguaje. Herramientas anteriores como [dep](https://github.com/golang/dep) quedaron obsoletas y su repositorio solo sirve como lectura. Usando la herramienta nativa gestionamos las dependencias con el estándar oficial de Go sin instalar software adicional.
 
 # Gestor de tareas
 
 ## Criterios
-Para tomar la decisión, he lanzado las pruebas en mi entorno local (WSL con Ubuntu), sabiendo que no es el entorno real donde acabará corriendo el proyecto (que irá en contenedores y CI). Al medir en local hay elementos que ya tenía de antes y que no estarían en un entorno limpio: los paquetes base del sistema que hacen que Make ya esté disponible, `curl` para instalar Just, o el entorno de Go ya configurado para compilar Task. Aun así, como he probado opciones en las mismas condiciones, la comparativa sigue siendo válida para medir estos dos criterios: 
+Todas las pruebas las he hecho en mi equipo (WSL con Ubuntu) en las mismas condiciones. Hay que tener en cuenta que Go ya estaba instalado y guardaba en disco librerías descargadas previamente, algo que aprovechan las herramientas que se instalan con go install. Además, para evitar variaciones en una sola ejecución, he lanzado la tarea `check` 10 veces seguidas en cada caso y he sacado la media. Los dos criterios que uso para decidir son:
 
-1. **Dependencias previas y requisitos de ejecución** — Importa porque el proyecto se va a desplegar en contenedores Docker limpios. Es relevante documentar si se requiere instalar utilidades adicionales del sistema operativo o intérpretes extra en la infraestructura base.
-2. **Tiempo de instalación y ejecución de tareas** — Importa porque, cada vez que se lanza un workflow de integración continua (CI), la máquina suele partir desde cero. El tiempo que tarda la herramienta en descargarse, configurarse y responder se suma al tiempo total de los despliegues y pruebas automatizadas.
+1. **Tiempo de instalación** — En integración continua el contenedor arranca limpio, así que el tiempo que tarda en descargarse e instalarse la herramienta se suma directamente al tiempo total.
+2. **Tiempo medio al ejecutar `check`** — Es la tarea que más veces vamos a lanzar tanto trabajando en local como en cada ejecución de CI.
 
 ## Opciones consideradas
 Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores clásicos como otras opciones genéricas más recientes:
 
-- **[Mise](https://github.com/jdx/mise):** Gestor moderno que combina control de versiones y tareas (`mise.toml`).
-- **[GNU Make](https://www.gnu.org/software/make/):** Es una herramienta basada en ficheros Makefile que ya viene integrada de serie en casi cualquier sistema tipo Linux/POSIX.
-- **[Just](https://github.com/casey/just):** Un lanzador de comandos más moderno y minimalista que usa un archivo justfile para organizar las tareas.
-- **[Task (go-task)](https://github.com/go-task/task):** Un gestor hecho en Go que usa ficheros YAML, por lo que resulta bastante fácil de leer.
-- **[xc](https://github.com/joerdav/xc):** Un task runner bastante nuevo que saca las tareas directamente de los bloques de código del propio `README.md`.
-- **[Mask](https://github.com/jacobdeichert/mask):** Un task runner que define las tareas dentro de un fichero Markdown (`maskfile.md`), usando bloques de código como comandos.
-- **[Invoke](https://github.com/pyinvoke/invoke):** Una herramienta genérica que permite escribir las tareas como funciones en Python (`tasks.py`).
+- **[GNU Make](https://www.gnu.org/software/make/):** Es una herramienta basada en ficheros Makefile.
+- **[Just](https://github.com/casey/just):** Un lanzador de comandos que guarda las tareas en un fichero `justfile` con una sintaxis inspirada en Make.
+- **[Task (go-task)](https://github.com/go-task/task):** Un gestor hecho en Go donde las tareas se escriben en formato YAML dentro de un `Taskfile.yml`.
+- **[Mise](https://github.com/jdx/mise):** Una herramienta que sirve tanto para gestionar versiones de lenguajes como para lanzar tareas definidas en un fichero `mise.toml`.
+- **[xc](https://github.com/joerdav/xc):** Un task runner que lee las tareas de un fichero Markdown.
 
 ## Análisis de las alternativas
 
-### Herramientas descartadas por el criterio 1 
-Antes de ponerme a medir tiempos en la terminal, hay cuatro opciones que se descartan por el primer filtro, ya que piden instalar intérpretes o binarios externos en un contenedor limpio:
+- **GNU Make:** Tarda `3.917s` en instalarse desde los repositorios de Ubuntu. Las 10 ejecuciones de `check` tardan `0.096s` en total, lo que da una media de **`0.0096s`** por ejecución.
 
-- **xc:** No viene en los repositorios estándar de Linux, así que obliga a descargar su binario aparte o a tener instalado el compilador de Go (`go install`) para montarlo en cada contenedor desde cero.
-- **Mise:** Tampoco viene de serie en las imágenes base y exige descargar un binario externo para poder usarlo.
-- **Mask:** Igual que los anteriores, no está incluido por defecto en Linux y obliga a bajar su binario externo o tener Cargo para compilarlo.
-- **Invoke:** Exige tener instalado todo el intérprete de Python y `pip` en el contenedor base antes de poder instalar y ejecutar la herramienta.
+  ![Medición de instalación y ejecución con GNU Make](img/make.png)
 
-### Comparativa medida de las finalistas
-Con las tres opciones que sí encajan mejor, paso a medir ambos criterios en terminal:
-
-- **GNU Make:**
-  - *Criterio 1 (Dependencias):* Ninguna, ya viene preinstalado en la mayoría de imágenes base de Linux.
-  - *Criterio 2 (Tiempos):* Tiempo de instalación nulo y ejecución de `check` en `0.050s`.
-
-  *(Evidencia de que Make ya viene disponible en el sistema)*:
-  ![Disponibilidad de Make](img/make-install.png)
-
-  *(Evidencia de ejecución de check)*:
-  ![Ejecución de check con Make](img/make-check.png)
-
-- **Just:**
-  - *Criterio 1 (Dependencias):* Obliga a tener instaladas herramientas previas como `curl` y `bash` en un contenedor para poder bajar el binario.
-  - *Criterio 2 (Tiempos):* Tarda `0.710s` en instalarse y `0.087s` en ejecutar `check`.
-
-  *(Evidencia de instalación)*:
-  ![Instalación de Just](img/just-install.png)
-
-  *(Evidencia de ejecución de check)*:
-  ![Ejecución de check con Just](img/just-check.png)
-
-- **Task (go-task):**
-  - *Criterio 1 (Dependencias):* Exige tener instalado el compilador completo de Go (`go install`) o bajar binarios externos y tocar el `PATH`.
-  - *Criterio 2 (Tiempos):* Tarda `33.795s` en compilarse e instalarse y `0.425s` en ejecutar `check`.
-
-  *(Evidencia de instalación)*:
-  ![Instalación de Task](img/task-install.png)
-
-  *(Evidencia de ejecución de check)*:
-  ![Ejecución de check con Task](img/task-check.png)
-
-## Reflexión final
-**Herramienta elegida:** GNU Make.
-
-**Por qué la he elegido:**
-Gana en los dos criterios en comparación al resto, ya que no pide dependencias previas ni descargas externas en contenedores limpios y da los tiempos más bajos tanto al arrancar como al ejecutar tareas. Además, mirando de cara a la integración continua, me ahorra pasos de instalación y quita posibles puntos de fallo.
