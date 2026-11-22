@@ -43,3 +43,9 @@ Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores 
 - **xc:** Tarda `7.215s` en descargarse y compilarse mediante `go install`. Las 10 ejecuciones de `check` tardan `0.230s` en total, con una media de **`0.023s`** por ejecución.
 
   ![Medición de instalación y ejecución con xc](img/xc.png)
+
+## Reflexión final
+**Herramienta elegida:** Just.
+
+**Por qué la he elegido:**
+Es la más rápida de instalar (`1.115s` en comparación a los `2.848s` de Mise o los `3.917s` de GNU Make) y al ejecutar `check` tarda prácticamente lo mismo que Make (`0.0111s` en comparación a `0.0096s`, 1,5 milisegundos de diferencia). En cada ejecución de CI hay que instalar la herramienta y lanzar `check` una vez, así que si sumamos los dos tiempos Just es la más rápida en total (`1.126s` frente a los `3.927s` de Make).
