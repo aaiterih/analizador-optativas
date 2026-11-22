@@ -35,3 +35,7 @@ Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores 
 - **Task (go-task):** Tarda `38.840s` en descargarse y compilarse con `go install`. Las 10 ejecuciones de `check` tardan `0.801s` en total, dejando una media de **`0.0801s`** por ejecución.
 
   ![Medición de instalación y ejecución con Task](img/task.png)
+
+- **Mise:** Tarda `2.848s` en instalarse con su instalador oficial. Las 10 ejecuciones de `check` tardan `0.278s` en total, es decir, **`0.0278s`** de media por ejecución.
+
+  ![Medición de instalación y ejecución con Mise](img/mise.png)
