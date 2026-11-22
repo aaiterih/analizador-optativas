@@ -28,3 +28,6 @@ Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores 
 
   ![Medición de instalación y ejecución con GNU Make](img/make.png)
 
+- **Just:** Tarda `1.115s` en instalarse con su script oficial. Las 10 ejecuciones de `check` tardan `0.111s` en total, con una media de **`0.0111s`** por ejecución.
+
+  ![Medición de instalación y ejecución con Just](img/just.png)
