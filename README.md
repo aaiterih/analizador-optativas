@@ -36,14 +36,22 @@ Las historias de usuario  y los Milestones se encuentran configurados y enlazado
 
 ## Automatización (Gestor de tareas)
 
-Usamos **GNU Make** como gestor de tareas. Si acabas de clonar el repositorio o has hecho cambios y quieres comprobar que el código está limpio y sin errores de sintaxis, abre la terminal y ejecuta:
+El proyecto usa **[Just](https://github.com/casey/just)** para lanzar las tareas y necesita tener **[Go](https://go.dev/dl/)** instalado para descargar las dependencias y pasar las comprobaciones.
+
+Si todavía no tienes Just instalado, puedes seguir la [guía oficial de instalación](https://just.systems/man/en/packages.html) o instalarlo en Linux con:
 
 ```bash
-make check
+curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | sudo bash -s -- --to /usr/local/bin
 ```
 
-Para instalar las dependencias necesarias:
+Para descargar las dependencias del proyecto:
 
 ```bash
-make install
+just install
+```
+
+Para comprobar que el código está bien y no tiene errores de sintaxis:
+
+```bash
+just check
 ```
