@@ -11,16 +11,19 @@ En Go no hay mucho que debatir. Según la documentación oficial de [Go Modules]
 Todas las pruebas las he hecho en mi equipo (WSL con Ubuntu) en las mismas condiciones. Hay que tener en cuenta que Go ya estaba instalado y guardaba en disco librerías descargadas previamente, algo que aprovechan las herramientas que se instalan con go install. Además, para evitar variaciones en una sola ejecución, he lanzado la tarea `check` 10 veces seguidas en cada caso y he sacado la media. Los dos criterios que uso para decidir son:
 
 1. **Tiempo de instalación** — En integración continua el contenedor arranca limpio, así que el tiempo que tarda en descargarse e instalarse la herramienta se suma directamente al tiempo total.
-2. **Tiempo medio al ejecutar `check`** — Es la tarea que más veces vamos a lanzar tanto trabajando en local como en cada ejecución de CI.
-
+2. **Tiempo medio al ejecutar `check`** — Es la tarea que se ejecutará en cada ejecución de CI, así que su tiempo se suma al de cada una.
 ## Opciones consideradas
 Para no quedarme solo con las herramientas de siempre, he mirado tanto gestores clásicos como otras opciones genéricas más recientes:
 
-- **[GNU Make](https://www.gnu.org/software/make/):** Es una herramienta basada en ficheros Makefile.
-- **[Just](https://github.com/casey/just):** Un lanzador de comandos que guarda las tareas en un fichero `justfile` con una sintaxis inspirada en Make.
-- **[Task (go-task)](https://github.com/go-task/task):** Un gestor hecho en Go donde las tareas se escriben en formato YAML dentro de un `Taskfile.yml`.
-- **[Mise](https://github.com/jdx/mise):** Una herramienta que sirve tanto para gestionar versiones de lenguajes como para lanzar tareas definidas en un fichero `mise.toml`.
-- **[xc](https://github.com/joerdav/xc):** Un task runner que lee las tareas de un fichero Markdown.
+- **[GNU Make](https://www.gnu.org/software/make/):** Es una herramienta basada en ficheros Makefile. Según su [manual oficial](https://www.gnu.org/software/make/manual/make.html), está pensada para automatizar qué partes de un programa deben recompilarse cuando cambian otros archivos, además de permitir lanzar cualquier tarea.
+
+- **[Just](https://github.com/casey/just):** Un command runner que guarda las tareas en un fichero `justfile` con una sintaxis inspirada en Make. Según su README, evita las reglas de compilación de Make centrándose solo en ejecutar órdenes.
+
+- **[Task (go-task)](https://github.com/go-task/task):** Un gestor hecho en Go donde las tareas se escriben en formato YAML dentro de un `Taskfile.yml`. Según su [web oficial](https://taskfile.dev/), está inspirado en Make y pensado como una herramienta multiplataforma para usar el mismo workflow en cualquier entorno.
+
+- **[Mise](https://github.com/jdx/mise):** Una herramienta que sirve tanto para gestionar versiones de lenguajes como para lanzar tareas definidas en un fichero `mise.toml`. Según su [documentación](https://mise.jdx.dev/tasks/), permite ejecutar comandos o scripts usando directamente las herramientas y variables de entorno del proyecto para que todo el equipo y CI los lancen igual.
+
+- **[xc](https://github.com/joerdav/xc):** Un task runner que lee las tareas de un fichero Markdown Según su README, busca evitar que la documentación y los scripts se queden desactualizados al unificarlos en el mismo archivo.
 
 ## Análisis de las alternativas
 
