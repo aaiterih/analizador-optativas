@@ -33,3 +33,25 @@ Para entender mejor los problemas reales que afrontan los estudiantes al elegir 
 Las historias de usuario  y los Milestones se encuentran configurados y enlazados directamente en la pestaña de Issues y Milestones de este repositorio y tambien en el directorio docs:
 * [Historias de usuario](docs/historias-de-usuario.md)
 * [Milestones](docs/hitos.md)
+
+## Automatización (Gestor de tareas)
+
+El proyecto usa **[Just](https://github.com/casey/just)** para lanzar las tareas y necesita tener **[Go](https://go.dev/dl/)** instalado para descargar las dependencias y pasar las comprobaciones.
+
+Si todavía no tienes Just instalado, puedes seguir la [guía oficial de instalación](https://just.systems/man/en/packages.html) o instalarlo en Linux con:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | sudo bash -s -- --to /usr/local/bin
+```
+
+Para descargar las dependencias del proyecto:
+
+```bash
+just install
+```
+
+Para comprobar que el código está bien y no tiene errores de sintaxis:
+
+```bash
+just check
+```
