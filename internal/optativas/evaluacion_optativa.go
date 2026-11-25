@@ -74,3 +74,7 @@ func (e EvaluacionOptativa) porcentajeContinua() float64 {
 
 	return suma(slices.Collect(maps.Values(continua)))
 }
+
+func (e EvaluacionOptativa) exigeNotaMinima() bool {
+	return len(e.condiciones) > 0
+}

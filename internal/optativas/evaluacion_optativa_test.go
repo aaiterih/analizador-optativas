@@ -74,3 +74,25 @@ func TestPorcentajeContinuaNoModificaLaEvaluacion(t *testing.T) {
 		t.Error("porcentajeContinua() ha borrado la teoría de la evaluación")
 	}
 }
+
+func TestExigeNotaMinima(t *testing.T) {
+	casos := map[string]struct {
+		condiciones map[TipoEvaluacion]CondicionMinima
+		esperado    bool
+	}{
+		"sin condiciones":         {nil, false},
+		"con nota mínima":         {map[TipoEvaluacion]CondicionMinima{Teoria: {tipo: NotaMinima, notaMinima: nota(5)}}, true},
+		"con aprobar una parte":   {map[TipoEvaluacion]CondicionMinima{Teoria: {tipo: AprobarParte}}, true},
+		"con las dos condiciones": {map[TipoEvaluacion]CondicionMinima{Teoria: {tipo: NotaMinima, notaMinima: nota(4)}, Practicas: {tipo: AprobarParte}}, true},
+	}
+
+	for nombre, caso := range casos {
+		t.Run(nombre, func(t *testing.T) {
+			evaluacion := EvaluacionOptativa{condiciones: caso.condiciones}
+
+			if obtenido := evaluacion.exigeNotaMinima(); obtenido != caso.esperado {
+				t.Errorf("exigeNotaMinima() = %v, se esperaba %v", obtenido, caso.esperado)
+			}
+		})
+	}
+}
