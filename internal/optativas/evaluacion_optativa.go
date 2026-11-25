@@ -23,7 +23,7 @@ type EvaluacionOptativa struct {
 }
 
 func NuevaEvaluacionOptativa(porcentajes map[TipoEvaluacion]float64, condiciones map[TipoEvaluacion]CondicionMinima) (EvaluacionOptativa, error) {
-	if err := validarPorcentajes(porcentajes); err != nil {
+	if err := errors.Join(validarPorcentajes(porcentajes), validarCondiciones(condiciones)); err != nil {
 		return EvaluacionOptativa{}, err
 	}
 
