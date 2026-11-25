@@ -9,3 +9,14 @@ const (
 	Entregables   TipoEvaluacion = "entregables"
 	Participacion TipoEvaluacion = "participacion"
 )
+
+var tiposEvaluacionContinua = map[TipoEvaluacion]bool{
+	Practicas:     true,
+	Trabajos:      true,
+	Entregables:   true,
+	Participacion: true,
+}
+
+func (t TipoEvaluacion) esContinua() bool {
+	return tiposEvaluacionContinua[t]
+}
