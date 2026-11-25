@@ -65,3 +65,12 @@ func errorSi(condicion bool, err error) error {
 func superaUmbralContinua(porcentajeContinua float64) bool {
 	return porcentajeContinua > umbralEvaluacionContinua
 }
+
+func (e EvaluacionOptativa) porcentajeContinua() float64 {
+	continua := maps.Clone(e.porcentajes)
+	maps.DeleteFunc(continua, func(tipo TipoEvaluacion, _ float64) bool {
+		return !tipo.esContinua()
+	})
+
+	return suma(slices.Collect(maps.Values(continua)))
+}

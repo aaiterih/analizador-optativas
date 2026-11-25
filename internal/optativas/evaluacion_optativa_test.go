@@ -43,3 +43,34 @@ func TestNuevaEvaluacionOptativaPorcentajes(t *testing.T) {
 		})
 	}
 }
+
+func TestPorcentajeContinua(t *testing.T) {
+	casos := map[string]struct {
+		porcentajes map[TipoEvaluacion]float64
+		esperado    float64
+	}{
+		"suma solo las partes de continua": {map[TipoEvaluacion]float64{Teoria: 45, Practicas: 30, Trabajos: 15, Entregables: 10}, 55},
+		"solo teoría":                      {map[TipoEvaluacion]float64{Teoria: 100}, 0},
+		"sin partes":                       {map[TipoEvaluacion]float64{}, 0},
+	}
+
+	for nombre, caso := range casos {
+		t.Run(nombre, func(t *testing.T) {
+			evaluacion := EvaluacionOptativa{porcentajes: caso.porcentajes}
+
+			if obtenido := evaluacion.porcentajeContinua(); obtenido != caso.esperado {
+				t.Errorf("porcentajeContinua() = %v, se esperaba %v", obtenido, caso.esperado)
+			}
+		})
+	}
+}
+
+func TestPorcentajeContinuaNoModificaLaEvaluacion(t *testing.T) {
+	evaluacion := EvaluacionOptativa{porcentajes: map[TipoEvaluacion]float64{Teoria: 60, Practicas: 40}}
+
+	evaluacion.porcentajeContinua()
+
+	if _, sigue := evaluacion.porcentajes[Teoria]; !sigue {
+		t.Error("porcentajeContinua() ha borrado la teoría de la evaluación")
+	}
+}
