@@ -4,3 +4,5 @@ entidad: internal/optativas/oferta_optativas.go
 automatizar:
   fichero: justfile
   orden: just
+
+test: internal/optativas/evaluacion_optativa_test.go

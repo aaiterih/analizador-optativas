@@ -55,3 +55,9 @@ Para comprobar que el código está bien y no tiene errores de sintaxis:
 ```bash
 just check
 ```
+
+Para lanzar los tests:
+
+```bash
+just test
+```
